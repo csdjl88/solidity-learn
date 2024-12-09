@@ -60,7 +60,13 @@ contract HelloWorld {
     // 5. 字符串
     string public greet = "Hello World!";
 
-    // 6. 一些常见变量的默认值
+    // 6.枚举 enum
+    // 用enum将uint 0， 1， 2表示为Buy, Hold, Sell
+    enum ActionSet {Buy, Hold, Sell}
+    // 创建enum变量 action
+    ActionSet action = ActionSet.Buy;
+
+    // 7. 一些常见变量的默认值
     // Unassigned variables have a default value
     bool public defaultBoo; // false
     uint public defaultUint; // 0
@@ -70,11 +76,6 @@ contract HelloWorld {
     // 状态变量
     uint public myUint = 123;
 
-    // 7.枚举 enum
-    // 用enum将uint 0， 1， 2表示为Buy, Hold, Sell
-    enum ActionSet {Buy, Hold, Sell}
-    // 创建enum变量 action
-    ActionSet action = ActionSet.Buy;
     // https://web3dao-cn.github.io/solidity-example/variables/
 
     // string 字符串类型
@@ -85,16 +86,4 @@ contract HelloWorld {
 
 
 
-
-
-
-    function add(uint x, uint y) external pure returns (uint) {
-        return x + y;
-        // external 外部可以读取
-        // pure 纯函数,不能够读写状态变量，不对链上做读写操作
-    }
-
-    function sub(uint x, uint y) external pure returns (uint) {
-        return x - y;
-    }
 }
