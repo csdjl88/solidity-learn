@@ -8,10 +8,10 @@ contract P2 {
     [returns (<return types>)]
     {
     // 函数名称
-    functionName 
+    functionName
     // 圆括号内写入函数的参数，入参&参数类型
     [parameter types[, ...]]
-    //函数可见性说明符，共有4种 
+    //函数可见性说明符，共有4种
     internal|external|public|private
 
     public：内部和外部均可见。
@@ -20,9 +20,9 @@ contract P2 {
     internal: 只能从合约内部访问，继承的合约可以用。
 
     //决定函数权限/功能的关键字
-    pure|view|payable] 
+    pure|view|payable]
 
-    // 法是否可以被重写，或者是否是重写方法。virtual用在父合约上，标识的方法可以被子合约重写。override用在自合约上，表名方法重写了父合约的方法。
+    // 方法是否可以被重写，或者是否是重写方法。virtual用在父合约上，标识的方法可以被子合约重写。override用在自合约上，表名方法重写了父合约的方法。
     [virtual|override]
 
     // 自定义的修饰器，可以有0个或多个修饰器
