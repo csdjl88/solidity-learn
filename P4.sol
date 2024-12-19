@@ -55,9 +55,22 @@ contract P4 {
     // 如果库函数都是 internal 的，库代码会嵌⼊到合约。
     // 如果库函数有external 或 public ，库需要单独部署，并在部署合约时进⾏链接，使⽤委托调⽤
     // 没有状态变量（library）
-    // 不能给库发送 Ether （library）• 给类型扩展功能：Using lib for type; 如： using SafeMath for uint;
+    // 不能给库发送 Ether （library）
+    // 给类型扩展功能：Using lib for type; 如： using SafeMath for uint;
 
 
-    // 1:06:03
+    // 公共库使用
+    library SafeMath { // 公共库
+        function add(uint x, uint y) internal pure returns (uint) {
+        uint z = x + y;
+        require(z >= x, "uint overflow");
+        return z;
+        }
+    }
+    contract TestLib {
+        using SafeMath for uint;  // 给类型扩展功能：Using lib for type
+        function testAdd(uint x, uint y) public pure returns (uint) {
+            return x.add(y); // 等价于 SafeMath.add(x, y);
+    }}
 
 }
