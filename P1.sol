@@ -22,7 +22,7 @@ contract HelloWorld {
 
     // 无符号整型变量 uint ，无符号整形只能是正整数。
     uint public u = 123; //  uint = uint256  ranges from 0 to 2 ** 256 - 1
-    uint public u8 = 8; //   uint8    ranges from 0 to 2 ** 8 - 1
+    uint public u8 = 8; //   uint8    ranges from 0 to 2 ** 8 - 1 255位
     uint public u16 = 16; //         uint16   ranges from 0 to 2 ** 16 - 1
     uint256 public u256 = 20220330; // 256位无符号整数
 
@@ -48,7 +48,9 @@ contract HelloWorld {
     address public addr = 0xCA35b7d915458EF540aDe6068dFe2F44E8fa733c; // 地址类型 16位
     address payable public _address1 = payable(addr); // payable address，可以转账、查余额
     // 地址类型的成员
-    uint256 public balance = _address1.balance; // balance of address
+    uint256 public balance = _address1.balance; // balance of address ： 返回地址的余额
+    _address1.transfer(uint256 amount)//  向地址发送以太币，失败时抛出异常 （gas：2300）
+    _address1.send(uint256 amount) returns (bool)// 向地址发送以太币，失败时返回false （gas：2300）
 
     // 4. 定长字节数组
     bytes32 public b32 = 0x4f50455241544f525f524f4c4500000000000000000000000000000000000000; // 32位
@@ -82,8 +84,27 @@ contract HelloWorld {
     // public 公共可见
     // greet 变量名
 
+    // 引用类型
+    // 引⽤类型太⼤， 不同的位置，不同的gas费⽤，需要有⼀个属性来标识数据的存储位置:
+    // memory（内存）: ⽣命周期只存在于函数调⽤期间
+    // storage（存储）: 状态变量保存的位置，gas开销最⼤
+    // calldata（调⽤数据）: ⽤于函数参数不可变存储区域
 
+    // 数组
+    // T[k] : 元素类型为T，固定⻓度为k的数组
+    // uint[10] tens;
+    // T[ ] : 元素类型为T，⻓度动态调整
+    // uint[] public numbers;
+    // 数组通过下标进⾏访问，序号是从0开始
+    // tens[0], numbers[1]
+    // 数组.成员
+    // Lengh属性：表示当前数组的⻓度
+    // push()：添加新的零初始化元素到数组末尾，返回引⽤
+    // push(x)： 动态数组末尾添加⼀个给定的元素
+    // pop(): 从数组末尾删除元素
 
+    // 结构体
 
+    // 映射
 
 }
